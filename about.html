@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Oliver Cole | Information Security Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        :root {
+            --cyber-black: #0a0a0f;
+            --cyber-dark: #12121f;
+            --cyber-blue: #0d47a1;
+            --cyber-green: #00ff41;
+            --cyber-cyan: #00e5ff;
+            --cyber-red: #ff1744;
+            --cyber-text: #e0e0e0;
+            --cyber-muted: #8a8a8a;
+            --cyber-glow: rgba(0, 255, 65, 0.7);
+        }
+
+        body {
+            background-color: var(--cyber-black);
+            color: var(--cyber-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(13, 71, 161, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 65, 0.05) 0%, transparent 20%);
+        }
+
+        /* Matrix Effect */
+        #matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        /* Cyber Grid */
+        .cyber-grid {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            background-color: rgba(10, 10, 15, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+            border-bottom: 1px solid var(--cyber-green);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--cyber-green);
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Orbitron', 'Consolas', monospace;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .logo::before {
+            content: '>';
+            position: absolute;
+            left: -10px;
+            color: var(--cyber-green);
+            animation: blink 1.5s infinite;
+        }
+
+        .logo span {
+            color: var(--cyber-cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--cyber-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyber-green);
+            text-shadow: 0 0 8px var(--cyber-glow);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--cyber-green);
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 5px var(--cyber-green);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: 1px solid var(--cyber-green);
+            color: var(--cyber-green);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 45px;
+            height: 45px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: rgba(0, 255, 65, 0.1);
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            min-height: calc(100vh - 80px);
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--cyber-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--cyber-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Container */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        /* About Sections */
+        .about-section {
+            background-color: rgba(18, 18, 31, 0.8);
+            border: 1px solid var(--cyber-green);
+            border-radius: 8px;
+            padding: 2.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 65, 0.2);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+        }
+
+        .section-icon {
+            font-size: 2rem;
+            color: var(--cyber-green);
+            margin-right: 1rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 255, 65, 0.1);
+            border-radius: 8px;
+            border: 1px solid var(--cyber-green);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--cyber-cyan);
+            font-family: 'Orbitron', monospace;
+        }
+
+        .section-content {
+            color: var(--cyber-text);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .section-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background-color: rgba(0, 255, 65, 0.05);
+            border: 1px solid var(--cyber-green);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background-color: rgba(0, 255, 65, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--cyber-green);
+            font-family: 'Orbitron', monospace;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--cyber-text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Certifications Grid */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .cert-item {
+            background-color: rgba(0, 229, 255, 0.05);
+            border: 1px solid var(--cyber-cyan);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            background-color: rgba(0, 229, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.2);
+        }
+
+        .cert-name {
+            font-size: 1.2rem;
+            color: var(--cyber-cyan);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cert-name i {
+            color: var(--cyber-green);
+        }
+
+        .cert-status {
+            font-size: 0.9rem;
+            color: var(--cyber-muted);
+            font-style: italic;
+        }
+
+        .cert-status.valid {
+            color: var(--cyber-green);
+        }
+
+        .cert-status.upcoming {
+            color: #ff9800;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin-top: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--cyber-green);
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background-color: var(--cyber-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            color: var(--cyber-green);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-subtitle {
+            font-size: 1.1rem;
+            color: var(--cyber-cyan);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .timeline-duration {
+            font-size: 0.9rem;
+            color: var(--cyber-muted);
+            margin-bottom: 0.8rem;
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background-color: rgba(0, 255, 65, 0.1);
+            border-radius: 3px;
+        }
+
+        .timeline-description {
+            color: var(--cyber-text);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem;
+            background-color: rgba(18, 18, 31, 0.8);
+            border: 1px solid var(--cyber-green);
+            border-radius: 8px;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            color: var(--cyber-green);
+            margin-bottom: 1.5rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            color: var(--cyber-text);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--cyber-green);
+            padding: 0.8rem 2rem;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--cyber-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .cta-button:hover {
+            background-color: var(--cyber-green);
+            color: var(--cyber-black);
+            box-shadow: 0 0 15px var(--cyber-glow);
+        }
+
+        .cta-button.secondary {
+            border-color: var(--cyber-cyan);
+            color: var(--cyber-cyan);
+        }
+
+        .cta-button.secondary:hover {
+            background-color: var(--cyber-cyan);
+            color: var(--cyber-black);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.7);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--cyber-dark);
+            padding: 2rem 5%;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 1px solid var(--cyber-green);
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyber-green), transparent);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--cyber-text);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            border: 1px solid transparent;
+        }
+
+        .social-links a:hover {
+            color: var(--cyber-green);
+            border-color: var(--cyber-green);
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--cyber-muted);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .cyber-contact {
+            color: var(--cyber-green);
+            margin-top: 0.5rem;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 1rem 5%;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background-color: rgba(10, 10, 15, 0.98);
+                width: 100%;
+                text-align: center;
+                padding: 2rem 0;
+                transition: right 0.5s ease;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+                border-top: 1px solid var(--cyber-green);
+                border-left: 1px solid var(--cyber-green);
+                z-index: 99;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1rem;
+            }
+            
+            .about-section {
+                padding: 1.5rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .section-icon {
+                margin-right: 0;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .certs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .section-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix Background Effect -->
+    <canvas id="matrix-bg"></canvas>
+    
+    <!-- Cyber Grid Background -->
+    <div class="cyber-grid"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">Oliver<span>Cole</span></a>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-terminal"></i>
+        </button>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Writeups</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="about">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">About Me</h1>
+            <p class="page-subtitle">Cybersecurity Researcher & Information Security Professional</p>
+        </div>
+
+        <!-- About Container -->
+        <div class="about-container">
+            <!-- Introduction Section -->
+            <section class="about-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h2 class="section-title">Introduction</h2>
+                </div>
+                <div class="section-content">
+                    <p>Welcome, my name is Oliver (if you didn't already guess) and I am a Cyber Security researcher from the United Kingdom. I am very passionate about a wide range of subjects within technology from hardware design and construction to information security and compliance.</p>
+                    <p>This website will host details about projects I am conducting and writeups of vulnerabilities. Please feel free to explore my website to learn more about me and my work.</p>
+                </div>
+                
+                <!-- Stats -->
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-number" id="yearsExp">11+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1st</span>
+                        <span class="stat-label">Class Honours Degree</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="certsCount">6+</span>
+                        <span class="stat-label">Certifications</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Sectors Experience</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section class="about-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h2 class="section-title">Education</h2>
+                </div>
+                <div class="section-content">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-title">Bachelor's Degree in Cyber Security</div>
+                            <div class="timeline-duration">First Class Honours</div>
+                            <div class="timeline-description">
+                                <p>During my time at university, I gained extremely valuable expertise in various areas such as network security, cryptography, and compliance standards. The comprehensive curriculum provided me with both theoretical knowledge and practical skills in cybersecurity defense and offense.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-title">Level 3 Advanced Technical Extended Diploma</div>
+                            <div class="timeline-subtitle">Digital Technologies</div>
+                            <div class="timeline-duration">Distinction</div>
+                            <div class="timeline-description">
+                                <p>This technical diploma provided me with foundational knowledge in digital technologies, including programming, networking fundamentals, and hardware systems, which formed the basis for my cybersecurity career.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Work Experience Section -->
+            <section class="about-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h2 class="section-title">Work Experience</h2>
+                </div>
+                <div class="section-content">
+                    <p>Overall I have 11 years of professional experience within technology and cyber security. I have worked across multiple sectors:</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-title">Current Role</div>
+                            <div class="timeline-subtitle">Owner & Operator</div>
+                            <div class="timeline-duration">EldraGroup - VPS & Data Storage Company</div>
+                            <div class="timeline-description">
+                                <p>Currently running my own VPS and data storage company, managing infrastructure security, client data protection, and business operations.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-title">Private Sector</div>
+                            <div class="timeline-subtitle">Cyber Security Specialist & Manager</div>
+                            <div class="timeline-duration">MSP & Local Computer Shop</div>
+                            <div class="timeline-description">
+                                <p>Served as a Cyber Security Specialist for a Managed Service Provider (MSP), implementing security controls and monitoring for client networks. Also managed a local computer shop, providing technical support and security consulting to small businesses.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-title">Charity Sector</div>
+                            <div class="timeline-subtitle">Information Security Analyst</div>
+                            <div class="timeline-description">
+                                <p>Worked as an Information Security Analyst, implementing security policies, conducting risk assessments, and ensuring compliance with data protection regulations for non-profit organizations.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-title">Education Sector</div>
+                            <div class="timeline-subtitle">Computing & Cyber Security Lecturer</div>
+                            <div class="timeline-description">
+                                <p>Taught computing and cybersecurity courses, developing curriculum and mentoring students in technical skills and security best practices.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 1.5rem;">If you would like to know more about my previous experience, please check out my Linked In or contact me.</p>
+                </div>
+            </section>
+
+            <!-- Certifications Section -->
+            <section class="about-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h2 class="section-title">Certifications</h2>
+                </div>
+                <div class="section-content">
+                    <p>I hold multiple professional certifications in cybersecurity and technology:</p>
+                    
+                    <div class="certs-grid">
+                        <div class="cert-item">
+                            <div class="cert-name">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>ISC2 Member (CCSM)</span>
+                            </div>
+                            <div class="cert-status valid">Valid Member</div>
+                            <p>Certified Cloud Security Manager through ISC2, demonstrating expertise in cloud security management.</p>
+                        </div>
+                        
+                        <div class="cert-item">
+                            <div class="cert-name">
+                                <i class="fas fa-desktop"></i>
+                                <span>Microsoft Office Specialist</span>
+                            </div>
+                            <div class="cert-status valid">Valid Certification</div>
+                            <p>Certified in Microsoft Office applications, showcasing proficiency in productivity software.</p>
+                        </div>
+                        
+                        <div class="cert-item">
+                            <div class="cert-name">
+                                <i class="fas fa-microchip"></i>
+                                <span>Advanced Circuit Repair Technician</span>
+                            </div>
+                            <div class="cert-status valid">Valid Certification</div>
+                            <p>Certified in advanced hardware repair and circuit-level troubleshooting.</p>
+                        </div>
+                        
+                        <div class="cert-item">
+                            <div class="cert-name">
+                                <i class="fas fa-user-shield"></i>
+                                <span>Purple Team Specialist</span>
+                            </div>
+                            <div class="cert-status valid">Valid Certification</div>
+                            <p>Expertise in both offensive and defensive security operations, bridging red and blue team activities.</p>
+                        </div>
+                        
+                        <div class="cert-item">
+                            <div class="cert-name">
+                                <i class="fas fa-crosshairs"></i>
+                                <span>Red Team Specialist</span>
+                            </div>
+                            <div class="cert-status valid">Valid Certification</div>
+                            <p>Specialized in offensive security, penetration testing, and adversary simulation.</p>
+                        </div>
+                        
+                        <div class="cert-item">
+                            <div class="cert-name">
+                                <i class="fas fa-chart-line"></i>
+                                <span>CISM (Certified Information Security Manager)</span>
+                            </div>
+                            <div class="cert-status upcoming">Coming Soon</div>
+                            <p>Currently preparing for the final examination for Certified Information Security Manager certification.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3 class="cta-title">Want to Know More?</h3>
+            <p class="cta-description">I'm always interested in discussing cybersecurity challenges, potential collaborations, or new opportunities.</p>
+            
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-button">
+                    <i class="fas fa-envelope"></i> Get In Touch
+                </a>
+               
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" title="HackerOne"><i class="fas fa-bug"></i></a>
+            <a href="contact.html" title="Contact"><i class="fas fa-envelope"></i></a>
+        </div>
+        <!--<p class="cyber-contact">Based in the United Kingdom | Cybersecurity Researcher</p>-->
+        <p class="copyright">&copy; 2026 OLIVER COLE | INFORMATION SECURITY PROFESSIONAL | ALL SYSTEMS SECURE</p>
+    </footer>
+
+    <script>
+        // Matrix Background Effect
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const letters = '01';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+        
+        for(let i = 0; i < columns; i++) {
+            drops[i] = Math.floor(Math.random() * canvas.height / fontSize) * fontSize;
+        }
+        
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#0f0';
+            ctx.font = `${fontSize}px monospace`;
+            
+            for(let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+                
+                ctx.fillStyle = Math.random() > 0.5 ? '#00ff41' : '#00e5ff';
+                ctx.fillText(text, x, y);
+                
+                if(y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i]++;
+            }
+        }
+        
+        setInterval(drawMatrix, 50);
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            if (navLinks.classList.contains('active')) {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                mobileMenuBtn.style.borderColor = '#ff1744';
+            } else {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-terminal"></i>';
+                mobileMenuBtn.style.borderColor = '#00ff41';
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-terminal"></i>';
+                mobileMenuBtn.style.borderColor = '#00ff41';
+            });
+        });
+        
+        // Animate stats counter
+        function animateCounter(id, start, end, duration) {
+            let obj = document.getElementById(id);
+            let startTime = null;
+            
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                obj.textContent = value + '+';
+                
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            }
+            
+            window.requestAnimationFrame(step);
+        }
+        
+        // Trigger counter animation when stats come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter('yearsExp', 0, 11, 2000);
+                    animateCounter('certsCount', 0, 6, 2000);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        observer.observe(document.querySelector('.stats-container'));
+        
+        // Update canvas size on window resize
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        // Fade in content on load
+        window.addEventListener('load', function() {
+            document.querySelector('.main-content').style.animation = 'fadeIn 1s ease-out';
+        });
+    </script>
+</body>
+</html>
