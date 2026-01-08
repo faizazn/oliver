@@ -26,39 +26,11 @@
         }
 
         body {
-            background-color: var(--cyber-black);
+            background-color: #000000;
             color: var(--cyber-text);
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(13, 71, 161, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(0, 255, 65, 0.05) 0%, transparent 20%);
-        }
-
-        /* Matrix Effect */
-        #matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.05;
-            pointer-events: none;
-        }
-
-        /* Cyber Grid */
-        .cyber-grid {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -1;
-            opacity: 0.3;
         }
 
         /* Navbar */
@@ -296,67 +268,16 @@
             letter-spacing: 1px;
         }
 
-        /* Certifications Grid */
-        .certs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .cert-item {
-            background-color: rgba(0, 229, 255, 0.05);
-            border: 1px solid var(--cyber-cyan);
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .cert-item:hover {
-            background-color: rgba(0, 229, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.2);
-        }
-
-        .cert-name {
-            font-size: 1.2rem;
-            color: var(--cyber-cyan);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .cert-name i {
-            color: var(--cyber-green);
-        }
-
-        .cert-status {
-            font-size: 0.9rem;
-            color: var(--cyber-muted);
-            font-style: italic;
-        }
-
-        .cert-status.valid {
-            color: var(--cyber-green);
-        }
-
-        .cert-status.upcoming {
-            color: #ff9800;
-        }
-
-        /* Timeline */
+        /* Timeline - Updated with better alignment */
         .timeline {
             position: relative;
             margin-top: 2rem;
-            padding-left: 2rem;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 0;
+            left: 20px;
             top: 0;
             bottom: 0;
             width: 2px;
@@ -366,8 +287,8 @@
 
         .timeline-item {
             position: relative;
-            margin-bottom: 2rem;
-            padding-left: 2rem;
+            margin-bottom: 2.5rem;
+            padding-left: 3.5rem;
         }
 
         .timeline-item:last-child {
@@ -377,19 +298,20 @@
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -2.5rem;
+            left: 12px;
             top: 0.5rem;
-            width: 12px;
-            height: 12px;
+            width: 16px;
+            height: 16px;
             background-color: var(--cyber-green);
             border-radius: 50%;
             box-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
+            z-index: 1;
         }
 
         .timeline-title {
             font-size: 1.3rem;
             color: var(--cyber-green);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             font-weight: 600;
         }
 
@@ -413,6 +335,22 @@
         .timeline-description {
             color: var(--cyber-text);
             line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .timeline-details {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .timeline-details p {
+            margin-bottom: 0.5rem;
+            color: var(--cyber-muted);
+        }
+
+        .timeline-details p:last-child {
+            margin-bottom: 0;
         }
 
         /* CTA Section */
@@ -470,17 +408,6 @@
             box-shadow: 0 0 15px var(--cyber-glow);
         }
 
-        .cta-button.secondary {
-            border-color: var(--cyber-cyan);
-            color: var(--cyber-cyan);
-        }
-
-        .cta-button.secondary:hover {
-            background-color: var(--cyber-cyan);
-            color: var(--cyber-black);
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.7);
-        }
-
         /* Footer */
         .footer {
             background-color: var(--cyber-dark);
@@ -533,13 +460,6 @@
             color: var(--cyber-muted);
             font-size: 0.9rem;
             letter-spacing: 1px;
-        }
-
-        .cyber-contact {
-            color: var(--cyber-green);
-            margin-top: 0.5rem;
-            font-family: 'Orbitron', monospace;
-            font-size: 0.9rem;
         }
 
         /* Animations */
@@ -612,11 +532,7 @@
             }
             
             .stats-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .certs-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .cta-buttons {
@@ -627,6 +543,18 @@
             .cta-button {
                 width: 100%;
                 max-width: 300px;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                padding-left: 3.5rem;
+            }
+            
+            .timeline-item::before {
+                left: 12px;
             }
         }
 
@@ -642,16 +570,26 @@
             .section-content {
                 font-size: 1rem;
             }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 15px;
+            }
+            
+            .timeline-item {
+                padding-left: 3rem;
+            }
+            
+            .timeline-item::before {
+                left: 7px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Matrix Background Effect -->
-    <canvas id="matrix-bg"></canvas>
-    
-    <!-- Cyber Grid Background -->
-    <div class="cyber-grid"></div>
-
     <!-- Navbar -->
     <nav class="navbar">
         <a href="index.html" class="logo">Oliver<span>Cole</span></a>
@@ -698,10 +636,6 @@
                         <span class="stat-label">Years Experience</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">1st</span>
-                        <span class="stat-label">Class Honours Degree</span>
-                    </div>
-                    <div class="stat-item">
                         <span class="stat-number" id="certsCount">6+</span>
                         <span class="stat-label">Certifications</span>
                     </div>
@@ -742,7 +676,7 @@
                 </div>
             </section>
 
-            <!-- Work Experience Section -->
+            <!-- Work Experience Section - UPDATED with complete job history -->
             <section class="about-section">
                 <div class="section-header">
                     <div class="section-icon">
@@ -751,114 +685,80 @@
                     <h2 class="section-title">Work Experience</h2>
                 </div>
                 <div class="section-content">
-                    <p>Overall I have 11 years of professional experience within technology and cyber security. I have worked across multiple sectors:</p>
+                    <p>Overall I have 11 years of professional experience within technology and cyber security across multiple sectors:</p>
                     
                     <div class="timeline">
+                        <!-- Current Roles at Top -->
                         <div class="timeline-item">
-                            <div class="timeline-title">Current Role</div>
-                            <div class="timeline-subtitle">Owner & Operator</div>
-                            <div class="timeline-duration">EldraGroup - VPS & Data Storage Company</div>
+                            <div class="timeline-title">Owner & Operator</div>
+                            <div class="timeline-subtitle">EldraGroup - VPS & Data Storage Company</div>
+                            <div class="timeline-duration">Current</div>
                             <div class="timeline-description">
-                                <p>Currently running my own VPS and data storage company, managing infrastructure security, client data protection, and business operations.</p>
+                                <p>Running my own VPS and data storage company, managing infrastructure security, client data protection, and business operations.</p>
                             </div>
                         </div>
                         
                         <div class="timeline-item">
-                            <div class="timeline-title">Private Sector</div>
-                            <div class="timeline-subtitle">Cyber Security Specialist & Manager</div>
-                            <div class="timeline-duration">MSP & Local Computer Shop</div>
+                            <div class="timeline-title">Information Technology Help Desk Technician</div>
+                            <div class="timeline-subtitle">Bluecube Cloud Services</div>
+                            <div class="timeline-duration">March 2025 - Present</div>
                             <div class="timeline-description">
-                                <p>Served as a Cyber Security Specialist for a Managed Service Provider (MSP), implementing security controls and monitoring for client networks. Also managed a local computer shop, providing technical support and security consulting to small businesses.</p>
+                                <p>Providing technical support and assistance for cloud services and IT infrastructure.</p>
+                                <div class="timeline-details">
+                                    <p>• Hybrid work arrangement</p>
+                                    <p>• Full-time position</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Previous Roles in Chronological Order -->
+                        <div class="timeline-item">
+                            <div class="timeline-title">College Lecturer</div>
+                            <div class="timeline-subtitle">Peterborough College</div>
+                            <div class="timeline-duration">September 2024 - February 2025</div>
+                            <div class="timeline-description">
+                                <p>Teaching computing and cybersecurity courses to college students.</p>
+                                <div class="timeline-details">
+                                    <p>• Created engaging lessons and assessed student progress</p>
+                                    <p>• Provided mentorship to support academic and professional development</p>
+                                    <p>• Collaborated with colleagues to refine curriculum</p>
+                                    <p>• On-site position in the United Kingdom</p>
+                                    <p>• Full-time role</p>
+                                </div>
                             </div>
                         </div>
                         
                         <div class="timeline-item">
-                            <div class="timeline-title">Charity Sector</div>
-                            <div class="timeline-subtitle">Information Security Analyst</div>
+                            <div class="timeline-title">Information Security Analyst</div>
+                            <div class="timeline-subtitle">British Heart Foundation</div>
+                            <div class="timeline-duration">June 2022 - July 2023</div>
                             <div class="timeline-description">
-                                <p>Worked as an Information Security Analyst, implementing security policies, conducting risk assessments, and ensuring compliance with data protection regulations for non-profit organizations.</p>
+                                <p>Information security analysis for a major UK charity organization.</p>
+                                <div class="timeline-details">
+                                    <p>• Remote position based in Greater London</p>
+                                    <p>• Internship/placement role</p>
+                                </div>
                             </div>
                         </div>
                         
                         <div class="timeline-item">
-                            <div class="timeline-title">Education Sector</div>
-                            <div class="timeline-subtitle">Computing & Cyber Security Lecturer</div>
+                            <div class="timeline-title">Manager</div>
+                            <div class="timeline-subtitle">AA Whittlesey Computers Ltd</div>
+                            <div class="timeline-duration">February 2016 - January 2021</div>
                             <div class="timeline-description">
-                                <p>Taught computing and cybersecurity courses, developing curriculum and mentoring students in technical skills and security best practices.</p>
+                                <p>Managed computer repair and IT services business in Peterborough.</p>
+                                <div class="timeline-details">
+                                    <p>• Worked alongside Len Stanley repairing, maintaining and building computers and laptops</p>
+                                    <p>• Served both non-commercial and commercial clients</p>
+                                    <p>• Managed the online presence of AA Whittlesey Computers Ltd</p>
+                                    <p>• Managed commercial and non-commercial computer networks and servers</p>
+                                    <p>• Part-time position in Peterborough, United Kingdom</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
                     <p style="margin-top: 1.5rem;">If you would like to know more about my previous experience, please check out my Linked In or contact me.</p>
-                </div>
-            </section>
-
-            <!-- Certifications Section -->
-            <section class="about-section">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h2 class="section-title">Certifications</h2>
-                </div>
-                <div class="section-content">
-                    <p>I hold multiple professional certifications in cybersecurity and technology:</p>
-                    
-                    <div class="certs-grid">
-                        <div class="cert-item">
-                            <div class="cert-name">
-                                <i class="fas fa-shield-alt"></i>
-                                <span>ISC2 Member (CCSM)</span>
-                            </div>
-                            <div class="cert-status valid">Valid Member</div>
-                            <p>Certified Cloud Security Manager through ISC2, demonstrating expertise in cloud security management.</p>
-                        </div>
-                        
-                        <div class="cert-item">
-                            <div class="cert-name">
-                                <i class="fas fa-desktop"></i>
-                                <span>Microsoft Office Specialist</span>
-                            </div>
-                            <div class="cert-status valid">Valid Certification</div>
-                            <p>Certified in Microsoft Office applications, showcasing proficiency in productivity software.</p>
-                        </div>
-                        
-                        <div class="cert-item">
-                            <div class="cert-name">
-                                <i class="fas fa-microchip"></i>
-                                <span>Advanced Circuit Repair Technician</span>
-                            </div>
-                            <div class="cert-status valid">Valid Certification</div>
-                            <p>Certified in advanced hardware repair and circuit-level troubleshooting.</p>
-                        </div>
-                        
-                        <div class="cert-item">
-                            <div class="cert-name">
-                                <i class="fas fa-user-shield"></i>
-                                <span>Purple Team Specialist</span>
-                            </div>
-                            <div class="cert-status valid">Valid Certification</div>
-                            <p>Expertise in both offensive and defensive security operations, bridging red and blue team activities.</p>
-                        </div>
-                        
-                        <div class="cert-item">
-                            <div class="cert-name">
-                                <i class="fas fa-crosshairs"></i>
-                                <span>Red Team Specialist</span>
-                            </div>
-                            <div class="cert-status valid">Valid Certification</div>
-                            <p>Specialized in offensive security, penetration testing, and adversary simulation.</p>
-                        </div>
-                        
-                        <div class="cert-item">
-                            <div class="cert-name">
-                                <i class="fas fa-chart-line"></i>
-                                <span>CISM (Certified Information Security Manager)</span>
-                            </div>
-                            <div class="cert-status upcoming">Coming Soon</div>
-                            <p>Currently preparing for the final examination for Certified Information Security Manager certification.</p>
-                        </div>
-                    </div>
                 </div>
             </section>
         </div>
@@ -872,7 +772,6 @@
                 <a href="contact.html" class="cta-button">
                     <i class="fas fa-envelope"></i> Get In Touch
                 </a>
-               
             </div>
         </div>
     </main>
@@ -885,52 +784,10 @@
             <a href="https://www.instagram.com/olivercole12/" title="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="mailto:info@olivercole.net" title="Contact via Email"><i class="fas fa-envelope"></i></a>
         </div>
-        <!--<p class="cyber-contact">Based in the United Kingdom | Cybersecurity Researcher</p>-->
         <p class="copyright">&copy; 2026 OLIVER COLE | INFORMATION SECURITY PROFESSIONAL | ALL SYSTEMS SECURE</p>
     </footer>
 
     <script>
-        // Matrix Background Effect
-        const canvas = document.getElementById('matrix-bg');
-        const ctx = canvas.getContext('2d');
-        
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        const letters = '01';
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = [];
-        
-        for(let i = 0; i < columns; i++) {
-            drops[i] = Math.floor(Math.random() * canvas.height / fontSize) * fontSize;
-        }
-        
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = '#0f0';
-            ctx.font = `${fontSize}px monospace`;
-            
-            for(let i = 0; i < drops.length; i++) {
-                const text = letters.charAt(Math.floor(Math.random() * letters.length));
-                const x = i * fontSize;
-                const y = drops[i] * fontSize;
-                
-                ctx.fillStyle = Math.random() > 0.5 ? '#00ff41' : '#00e5ff';
-                ctx.fillText(text, x, y);
-                
-                if(y > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                
-                drops[i]++;
-            }
-        }
-        
-        setInterval(drawMatrix, 50);
-        
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
@@ -987,12 +844,6 @@
         }, { threshold: 0.3 });
         
         observer.observe(document.querySelector('.stats-container'));
-        
-        // Update canvas size on window resize
-        window.addEventListener('resize', function() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
         
         // Fade in content on load
         window.addEventListener('load', function() {
